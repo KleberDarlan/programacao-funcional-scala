@@ -2,7 +2,6 @@ package funcoes
 
 object companhia extends App {
   
-  // 1) A
   // funcao que retorna assentos livres de uma aeronave
   // passando uma aeronave e uma funcao por parametro
   
@@ -14,7 +13,6 @@ object companhia extends App {
     resultado
   }
   
-  //  1) A e B
   //  funcao para retornar numero de assentos livres/ocupados
   //  passando uma fila de assentos por parâmetro e uma flag
   //  com o valor desejado
