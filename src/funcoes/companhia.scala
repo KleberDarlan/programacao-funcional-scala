@@ -6,26 +6,25 @@ object companhia extends App {
   // funcao que retorna assentos livres de uma aeronave
   // passando uma aeronave e uma funcao por parametro
   
-  def assentosLivres(aeronave:List[List[Int]])(f:(List[Int]) => Int):Int = {
+  def assentosLivres(aeronave:List[List[Int]])(f:(List[Int]) => (Int) => Int):Int = {
     var resultado = 0
     aeronave.foreach( x => {
-      resultado += f(x)
+      resultado += f(x)(0)
     })
-    
     resultado
   }
   
-  //  1) B
-  //  funcao para retornar numero de assentos livres
-  //  passando uma fila de assentos por parâmetro
+  //  1) A e B
+  //  funcao para retornar numero de assentos livres/ocupados
+  //  passando uma fila de assentos por parâmetro e uma flag
+  //  com o valor desejado
   
-  var assentosLivresPorFila = (lista:List[Int]) => {
+  var assentosPorFila = (lista:List[Int]) => (flag:Int) => {
     var resultado = 0
     lista.foreach( x => {
-        if(x == 0)
+        if(x == flag)
           resultado += 1
     })
-    
     resultado
   }
   
@@ -34,9 +33,9 @@ object companhia extends App {
               List(1, 0, 1)
            )
   
-  // Assentos livres de uma aeronave
-  println(assentosLivres(aeronave)(assentosLivresPorFila))
-  // Assentos livres por fila  
-  println(assentosLivresPorFila(aeronave(0)))
+  // 1) A - Assentos livres de uma aeronave
+  println("Qtd. de assentos livres da Aeronave: " + assentosLivres(aeronave)(assentosPorFila))
+  // 1) B - Assentos ocupados, dada uma fila  
+  println("Qtd. de assentos ocupados da fila: " + assentosPorFila(aeronave(0))(1))
   
 }
