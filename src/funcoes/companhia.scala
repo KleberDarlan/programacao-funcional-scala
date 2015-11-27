@@ -22,20 +22,39 @@ object companhia extends App {
   // 1) C
   // funcao para retornar conjundo com assentos contínuos livres
   def assentosConinuosLivres(fila: List[Int]) = {
-    var assentos = fila.zipWithIndex.filter(_._1 == 0).map(_._2)
     var assentosLivres:List[Int] = Nil
-      
-    assentos.sliding(2).foreach(x => {
-      if(x(1) == x(0) + 1)
-        x.foreach { x => assentosLivres = x::assentosLivres }
-    })
-    
+		fila.zipWithIndex.filter(_._1 == 0).map(_._2)
+      .sliding(2).foreach(x => {
+          if(x(1) == x(0) + 1)
+            x.foreach { x => assentosLivres = x::assentosLivres }
+        })
+
     assentosLivres.distinct.sorted
+  }
+  
+  // 1) D
+  // funcao para retornar conjunto formado pelas filas contínuas 
+  // de uma aeronave com a maior quantidade de assentos contínuos
+  // livres
+  def filasContinuasLivres(aeronave: List[List[Int]]) = {
+    
   }
   
   var aeronave = List(
               List(0, 0, 1, 0, 0, 1),
+              List(1, 0, 0, 0, 1, 0),
+              List(1, 0, 1, 1, 1, 0),
               List(1, 0, 0, 0, 1, 0)
+           )
+  
+  var aeronave2 = List(
+              List(0, 0, 1, 0, 0, 1),
+              List(1, 0, 1, 1, 1, 0)
+           )
+  
+  var aeronave3 = List(
+              List(0, 0, 1, 0, 1, 1),
+              List(1, 0, 1, 1, 1, 1)
            )
   
   println("Qtd. de assentos livres da Aeronave: " + assentosLivresAeronave(aeronave)(assentosPorFila))  
