@@ -40,6 +40,12 @@ object companhia extends App {
     
   }
   
+  // 1) E
+  // funcao para retornar aeronave(s) com maior numero de assentos ocupados
+  def aeronavesAssentosOcupados(companhia:List[List[List[Int]]]) = {
+    
+  }
+  
   var aeronave = List(
               List(0, 0, 1, 0, 0, 1),
               List(1, 0, 0, 0, 1, 0),
@@ -56,10 +62,11 @@ object companhia extends App {
               List(0, 0, 1, 0, 1, 1),
               List(1, 0, 1, 1, 1, 1)
            )
+           
+  var companhiaList = List(aeronave, aeronave2, aeronave3)
   
   println("Qtd. de assentos livres da Aeronave: " + assentosLivresAeronave(aeronave)(assentosPorFila))  
   println("Qtd. de assentos ocupados da fila: " + assentosPorFila(aeronave(0))(1))
   println("Assentos continuos livres de uma fila: " + assentosConinuosLivres(aeronave(0)))
-//  assentosConinuosLivres(aeronave(0))
-  
+  println("Aeronaves com maior n. assent. ocupados: " + aeronavesAssentosOcupados(companhiaList))
 }
