@@ -28,7 +28,7 @@ object companhia extends App {
           if(x(1) == x(0) + 1)
             x.foreach { x => assentosLivres = x::assentosLivres }
         })
-
+    
     assentosLivres.distinct.sorted
   }
   
@@ -37,7 +37,7 @@ object companhia extends App {
   // de uma aeronave com a maior quantidade de assentos contínuos
   // livres
   def filasContinuasLivres(aeronave: List[List[Int]]) = {
-    
+    aeronave.map(assentosConinuosLivres(_)).zipWithIndex.filter(!_._1.isEmpty).map(_._2).filter(_ < 3)
   }
   
   // 1) E
@@ -47,7 +47,7 @@ object companhia extends App {
   }
   
   var aeronave = List(
-              List(0, 0, 1, 0, 0, 1),
+              List(0, 0, 1, 1, 0, 0),
               List(1, 0, 0, 0, 1, 0),
               List(1, 0, 1, 1, 1, 0),
               List(1, 0, 0, 0, 1, 0)
@@ -68,5 +68,7 @@ object companhia extends App {
   println("Qtd. de assentos livres da Aeronave: " + assentosLivresAeronave(aeronave)(assentosPorFila))  
   println("Qtd. de assentos ocupados da fila: " + assentosPorFila(aeronave(0))(1))
   println("Assentos continuos livres de uma fila: " + assentosConinuosLivres(aeronave(0)))
+  println("Filas continuas com assentos cont. livres: " + filasContinuasLivres(aeronave))
   println("Aeronaves com maior n. assent. ocupados: " + aeronavesAssentosOcupados(companhiaList))
+ 
 }
